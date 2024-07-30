@@ -18,16 +18,16 @@ public abstract class BaseTest {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(80, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
         BasePage.setDriver(driver);
 
     }
 
     @AfterTest
     public void closeDriver() {
-        driver.close();
-        driver.quit();
+       // driver.close();
+        //driver.quit();
     }
 
 }

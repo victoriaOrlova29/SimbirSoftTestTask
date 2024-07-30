@@ -1,11 +1,12 @@
 package pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AutomationPracticeForm extends BasePage {
-    @FindBy(id = "firstName")
+    @FindBy(css = "#firstName")
     private WebElement firstNameField;
 
     @FindBy(xpath = "//input[@id = 'lastName']")
@@ -14,47 +15,95 @@ public class AutomationPracticeForm extends BasePage {
     @FindBy(css = "input#userEmail")
     private WebElement userEmailField;
 
-    @FindBy(id = "gender-radio-1")
-    private WebElement getMaleButtons;
-
-    @FindBy(xpath = " //input[@id=\"gender-radio-2\"]")
+    @FindBy(xpath = "//*[text()=\"Female\"]")
     private WebElement getFemaleButtons;
-
-    @FindBy(css = "input#gender-radio-3")
-    private WebElement getOtherButtons;
 
     @FindBy(xpath = " //input[@id=\"userNumber\"]")
     private WebElement userNumberField;
 
-    @FindBy(xpath = " //input[@id=\"dateOfBirthInput\"]") //оставляем?
+    @FindBy(id = "dateOfBirthInput")
     private WebElement dateOfBirthInput;
 
-    @FindBy(xpath = "//div[@class=\"react-datepicker__day react-datepicker__day--015 react-datepicker__day--selected\"]div[@class=\"react-datepicker__month-container\"]")
-    //15 число
+    @FindBy(xpath = "//div[text()=15]")
     private WebElement dateOfBirthValue;
 
-    @FindBy(css = "div#subjectsContainer")
+    @FindBy(xpath = "//div[@id=\"subjectsContainer\"]//input[@id=\"subjectsInput\"]")
     private WebElement subjectsContainerField;
 
-    @FindBy(xpath = " //input[@id=\"hobbies-checkbox-1\"]")
-    private WebElement sportsCheckbox;
-
-    @FindBy(xpath = "  //input[@id=\"hobbies-checkbox-2\"]")
+    @FindBy(xpath = "//*[text()=\"Music\"]")
     private WebElement readingCheckbox;
-
-    @FindBy(xpath = "  //input[@id=\"hobbies-checkbox-2\"]")
-    private WebElement musicCheckbox;
 
     //узнать про выбор файла
 
     @FindBy(xpath = "//textarea[@id=\"currentAddress\"]")
     private WebElement currentAddressField;
 
-    @FindBy(xpath = "//*[@id=\"state\"]div[@class=\" css-1uccc91-singleValue\"]")
-    private WebElement StateandCityField; //не получается(
+    @FindBy(xpath = "//*[@id=\"state\"]")
+    private WebElement stateSelector; //Uttar Pradesh
 
+    @FindBy(xpath = "//*[@id=\"city\"]")
+    private WebElement citySelector; //Lucknow
 
     public AutomationPracticeForm() {
+
+        PageFactory.initElements(driver, this);
+    }
+
+    public AutomationPracticeForm openPracticePage() {
         driver.get("https://demoqa.com/automation-practice-form");
-        PageFactory.initElements(driver,this);    }
+        return new AutomationPracticeForm();
+    }
+
+    public AutomationPracticeForm fillFirstName (String firstName){
+        firstNameField.sendKeys(firstName);
+        return new AutomationPracticeForm();
+    }
+
+    public AutomationPracticeForm fillLastName (String lastName){
+        lastNameField.sendKeys(lastName);
+        return new AutomationPracticeForm();
+    }
+     public AutomationPracticeForm clickFemale (){
+        getFemaleButtons.click();
+         return new AutomationPracticeForm();
+     }
+    public AutomationPracticeForm fillEmail (String EmailFill){
+       userEmailField.sendKeys(EmailFill);
+        return new AutomationPracticeForm();
+    }
+    public AutomationPracticeForm fillMobile (String numberFill){
+        userNumberField.sendKeys(numberFill);
+        return new AutomationPracticeForm();
+    }
+    public AutomationPracticeForm selectDateOfBirth (){
+        dateOfBirthInput.click();
+        dateOfBirthValue.click();
+        return new AutomationPracticeForm();
+    }
+    public AutomationPracticeForm fillSubjects(String subjectFill){
+        subjectsContainerField.sendKeys(subjectFill);
+        subjectsContainerField.sendKeys(Keys.RETURN);
+        return new AutomationPracticeForm();
+    }
+    public AutomationPracticeForm clickHobbies(){
+        readingCheckbox.click();
+        return new AutomationPracticeForm();
+    }
+    public AutomationPracticeForm fillCurrentAddress(String addressFill){
+        currentAddressField.sendKeys(addressFill);
+        return new AutomationPracticeForm();
+    }
+    public AutomationPracticeForm fillStateSelector (){
+        stateSelector.click();
+        stateSelector.sendKeys("Uttar Pradesh");
+        stateSelector.sendKeys(Keys.RETURN);
+        return new AutomationPracticeForm();
+    }
+    public AutomationPracticeForm fillCitySelector (){
+        citySelector.click();
+        citySelector.sendKeys("Lucknow");
+        citySelector.sendKeys(Keys.RETURN);
+        return new AutomationPracticeForm();
+    }
+
 }

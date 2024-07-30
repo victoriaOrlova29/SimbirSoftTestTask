@@ -8,7 +8,7 @@ public class FakeUsersData {
     static String LAST_NAME = faker.name().lastName();
     static String EMAIL = faker.internet().emailAddress();
     static String MOBILE = faker.phoneNumber().subscriberNumber(10);
-    static String SUBJECTS = faker.dragonBall().character();
+    static String SUBJECTS = "football";
     static String CURRENT_ADDRESS = faker.address().fullAddress();
 
     public static String getFirstName() {
