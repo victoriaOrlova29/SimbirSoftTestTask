@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="UI autotests">
+    <suite-files>
+        <suite-file path="tests1.xml"></suite-file>
+    </suite-files>
+</suite>
