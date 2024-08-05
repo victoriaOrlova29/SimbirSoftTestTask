@@ -8,8 +8,14 @@ public class FakeUsersData {
     static String LAST_NAME = faker.name().lastName();
     static String EMAIL = faker.internet().emailAddress();
     static String MOBILE = faker.phoneNumber().subscriberNumber(10);
-    static String SUBJECTS = "football";
+    static String SUBJECTS = "History";
     static String CURRENT_ADDRESS = faker.address().fullAddress();
+    static String STATE = "Uttar Pradesh";
+    static String CITY = "Lucknow";
+    static String FEMALE = "Female";
+    static String HOBBY = "Female";
+
+
 
     public static String getFirstName() {
         return FIRST_NAME;
@@ -34,4 +40,12 @@ public class FakeUsersData {
     public static String getCurrentAddress() {
         return CURRENT_ADDRESS;
     }
+
+    public static String getSTATE() { return  STATE; }
+
+    public static String getCITY() { return  CITY; }
+
+    public static String getFemale() { return  FEMALE; }
+
+    public static String getHOBBY() { return  HOBBY; }
 }
